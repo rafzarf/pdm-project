@@ -3,6 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
+    # container_name: terserah_maneh
     env_file:
       - .env
     ports:
@@ -13,6 +14,7 @@ services:
 
   db:
     image: postgres:alpine
+    # container_name: terserah_maneh
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -22,5 +24,17 @@ services:
     volumes:
       - postgres-db:/var/lib/postgresql/data
 
+  pgadmin:
+    image: dpage/pgadmin4
+    # container_name: terserah_maneh
+    ports:
+      - "8888:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
 volumes:
   postgres-db:
+  pgadmin-data:
