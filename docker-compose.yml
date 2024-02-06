@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
-    # container_name: terserah_maneh
+    container_name: sistemBackendGo
     env_file:
       - .env
     ports:
@@ -14,7 +14,7 @@ services:
 
   db:
     image: postgres:alpine
-    # container_name: terserah_maneh
+    container_name: sistemNyimpendb
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -26,7 +26,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    # container_name: terserah_maneh
+    container_name: sistemNyimpenPgAdmin
     ports:
       - "8888:80"
     environment:
